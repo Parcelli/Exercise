@@ -23,8 +23,8 @@ under your Bioinformatics Project
 
 ```
 #Using the mv command to move the datasets from downloads folder to data folder
-
-mv
+cd data
+mv ../nrf1_seq* ./
 ```
  
 4. Extract the sequence headers and save into a file `sequence_names.txt` in the
@@ -56,8 +56,19 @@ grep -c "mRNA" nrf1_seqtemp.fa
 #Output : 90  
 ```
 - What other sequences apart from mRNA?
+```
+cDNA
+```
 - For each category, how many are there?
+```
+ grep -v "mRNA" sample_headers.txt |wc
+#output : 20
+```
+  
 - Save the above output to files.
+```
+ grep -v "mRNA" sample_headers.txt > non_mrna.txt
+```
 7. How many organisms (create a file with the organisms without duplicates)
 ```
 #Extracting organisms and saving in file species.txt
