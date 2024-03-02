@@ -86,3 +86,38 @@ sort species.txt | uniq |wc
 #Output : 156
 ```
 9. How many nucleotides are in the file? How many of each of the bases are there?
+```
+#Number of nucleotides in nrf1_seq fasta file
+#First I extract only the nucleotides and save them in a new file using grep -v
+grep -v "^>" nrf1_seq.fa  > nrf1_seq
+#Then filter out the last line doesnt contain a valid nucleotide
+head -n -1 nrf1_seq > nrf1.seq
+#Counting number of nucleotides using wc -m flag which counts characters
+wc -m nrf1.seq
+#Output : 820493
+```
+* Number of nucleotides in nrf1_seqtemp.fa
+```
+grep -v "^>" nrf1_seqtemp.fa |wc -m
+#Output:  820493
+```
+* Number of each bases
+```
+#Counting each number of nucleotide using grep -o flag which show only nonempty parts of lines that match.
+#Count of A
+grep -o 'A' nrf1_seqtemp |wc -l
+#output:215395
+
+#Count of G
+grep -o 'G' nrf1_seqtemp |wc -l
+#Output: 193881
+
+#Count of C
+grep -o 'C' nrf1_seqtemp |wc -l
+#output:184571
+
+
+#Count of T
+grep -o 'T' nrf1_seqtemp |wc -l
+#Output: 216465
+```
